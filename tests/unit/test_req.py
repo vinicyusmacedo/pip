@@ -347,8 +347,8 @@ class TestInstallRequirement(object):
         assert req.link.url == url + fragment, req.link
 
     def test_pep440_wheel_link_requirement(self):
-        url = 'https://whatever.com/peppercorn-any.whl'
-        line = 'peppercorn @ https://whatever.com/peppercorn-any.whl'
+        url = 'https://whatever.com/test-0.4-py2.py3-bogus-any.whl'
+        line = 'test @ https://example/test-0.4-py2.py3-bogus-any.whl'
         req = install_req_from_line(line)
         assert req.link is not None
         assert req.link.url == url
