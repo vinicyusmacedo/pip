@@ -355,6 +355,15 @@ class TestInstallRequirement(object):
         assert req.link.is_wheel
         assert req.link.scheme == "https"
 
+    def test_pep508_url_link_requirement(self):
+        url = 'git+http://foo.com@ref#egg=foo'
+        line = 'foo @ git+http://foo.com@ref#egg=foo'
+        req = install_req_from_line(line)
+        assert req.link is not None
+        assert req.link.url == url
+        assert not req.link.is_wheel
+        assert req.link.scheme == "git+http"
+
     def test_unsupported_wheel_link_requirement_raises(self):
         reqset = RequirementSet()
         req = install_req_from_line(
