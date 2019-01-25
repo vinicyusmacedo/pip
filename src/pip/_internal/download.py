@@ -464,7 +464,7 @@ def is_url(name):
 
 
 def split_scheme_from_url(url):
-    # type: (str) -> Tuple[str, Text]
+    # type: (Union[str, Text]) -> Tuple[str, str]
     """
     Splits scheme from URL and returns both separated.
     """
