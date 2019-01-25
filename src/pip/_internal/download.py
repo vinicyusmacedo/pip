@@ -468,7 +468,7 @@ def split_scheme_from_url(url):
     Splits scheme from URL and returns both separated.
     """
     scheme = url.split(':', 1)[0].lower()
-    url = url.split(':', 1)[1].lower()
+    url = url.split(':', 1)[1]
     if '@' in scheme:
         scheme = scheme.split('@', 1)[1].lower()
         scheme = scheme.strip()

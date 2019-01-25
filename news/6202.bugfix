@@ -1,0 +1,1 @@
+Fixes is_url to correctly match scheme when installing a PEP 440 direct reference.
