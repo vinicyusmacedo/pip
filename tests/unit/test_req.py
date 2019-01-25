@@ -346,6 +346,15 @@ class TestInstallRequirement(object):
         req = install_req_from_line(url + fragment)
         assert req.link.url == url + fragment, req.link
 
+    def test_pep508_wheel_link_requirement(self):
+        url = 'https://whatever.com/peppercorn-0.4-py2.py3-bogus-any.whl'
+        line = 'peppercorn @ https://whatever.com/peppercorn-0.4-py2.py3-bogus-any.whl'
+        req = install_req_from_line(line)
+        assert req.link is not None
+        assert req.link.url == url
+        assert req.link.is_wheel
+        assert req.link.scheme == "https"
+
     def test_unsupported_wheel_link_requirement_raises(self):
         reqset = RequirementSet()
         req = install_req_from_line(

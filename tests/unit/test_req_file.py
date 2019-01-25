@@ -198,6 +198,13 @@ class TestProcessLine(object):
         req = install_req_from_line(line, comes_from=comes_from)
         assert repr(list(process_line(line, filename, 1))[0]) == repr(req)
 
+    def test_yield_pep508_line_requirement(self):
+        line = 'SomeProject @ https://url/SomeProject-py2-py3-none-any.whl'
+        filename = 'filename'
+        comes_from = '-r %s (line %s)' % (filename, 1)
+        req = install_req_from_line(line, comes_from=comes_from)
+        assert repr(list(process_line(line, filename, 1))[0]) == repr(req)
+
     def test_yield_line_constraint(self):
         line = 'SomeProject'
         filename = 'filename'
