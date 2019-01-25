@@ -455,7 +455,7 @@ _url_slash_drive_re = re.compile(r'/*([a-z])\|', re.I)
 
 
 def is_url(name):
-    # type: (Union[str, Text]) -> bool
+    # type: (str) -> bool
     """Returns true if the name looks like a URL"""
     if ':' not in name:
         return False
@@ -464,7 +464,7 @@ def is_url(name):
 
 
 def split_scheme_from_url(url):
-    # type: (Union[str, Text]) -> Tuple[str, str]
+    # type: (str) -> Tuple[str, str]
     """
     Splits scheme from URL and returns both separated.
     """
