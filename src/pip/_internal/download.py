@@ -462,6 +462,7 @@ def is_url(name):
     scheme = split_scheme_from_url(name)[0]
     return scheme in ['http', 'https', 'file', 'ftp'] + vcs.all_schemes
 
+
 def split_scheme_from_url(url):
     # type: (str) -> Tuple[str, Text]
     """
@@ -473,6 +474,7 @@ def split_scheme_from_url(url):
         scheme = scheme.split('@', 1)[1].lower()
         scheme = scheme.strip()
     return scheme, url
+
 
 def url_to_path(url):
     # type: (str) -> str
