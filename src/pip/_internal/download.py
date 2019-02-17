@@ -455,25 +455,12 @@ _url_slash_drive_re = re.compile(r'/*([a-z])\|', re.I)
 
 
 def is_url(name):
-    # type: (str) -> bool
+    # type: (Union[str, Text]) -> bool
     """Returns true if the name looks like a URL"""
     if ':' not in name:
         return False
-    scheme = split_scheme_from_url(name)[0]
+    scheme = name.split(':', 1)[0].lower()
     return scheme in ['http', 'https', 'file', 'ftp'] + vcs.all_schemes
-
-
-def split_scheme_from_url(url):
-    # type: (str) -> Tuple[str, str]
-    """
-    Splits scheme from URL and returns both separated.
-    """
-    scheme = url.split(':', 1)[0].lower()
-    url = url.split(':', 1)[1]
-    if '@' in scheme:
-        scheme = scheme.split('@', 1)[1].lower()
-        scheme = scheme.strip()
-    return scheme, url
 
 
 def url_to_path(url):

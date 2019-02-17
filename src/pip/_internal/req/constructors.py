@@ -18,7 +18,7 @@ from pip._vendor.packaging.specifiers import Specifier
 from pip._vendor.pkg_resources import RequirementParseError, parse_requirements
 
 from pip._internal.download import (
-    is_archive_file, is_url, path_to_url, split_scheme_from_url, url_to_path,
+    is_archive_file, is_url, path_to_url, url_to_path,
 )
 from pip._internal.exceptions import InstallationError
 from pip._internal.models.index import PyPI, TestPyPI
@@ -233,9 +233,7 @@ def install_req_from_line(
     extras_as_string = None
 
     if is_url(name):
-        scheme, url = split_scheme_from_url(name)
-        url = ':'.join([scheme, url])
-        link = Link(url)
+        link = Link(name)
     else:
         p, extras_as_string = _strip_extras(path)
         looks_like_dir = os.path.isdir(p) and (
